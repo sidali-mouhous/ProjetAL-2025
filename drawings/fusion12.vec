@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dessin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="dessin.xsd">
+  <rect x1="10" y1="10" x2="50" y2="50" color="blue"/>
+  <groupe nom="mon_cercle">
+    <circ cx="100" cy="100" r="20" color="red"/>
+  </groupe>
+</dessin>

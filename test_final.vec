@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dessin>
-  <forme type="cercle">circle 150 400 60 blue</forme>
-  <forme type="groupe">group [mon_groupe]</forme>
-</dessin>

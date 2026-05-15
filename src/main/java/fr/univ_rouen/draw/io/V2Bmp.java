@@ -20,26 +20,23 @@ public class V2Bmp {
             String source = args[0];
             String destination = args[1];
 
-            // 1. Charger le dessin
             Dessin dessin = new Dessin();
             GestionnaireFichier.charger(dessin, source, new Interpreteur(dessin, null));
 
-            // 2. Créer l'image en mémoire (800x600 par défaut)
+            // Créer l'image en mémoire (800x600 par défaut)
             BufferedImage image = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
             Graphics2D g2d = image.createGraphics();
 
-            // 3. Fond blanc (sinon c'est noir par défaut)
             g2d.setColor(Color.WHITE);
             g2d.fillRect(0, 0, 800, 600);
 
-            // 4. Dessiner chaque forme sur l'image
+            // Dessiner chaque forme sur l'image
             for (Forme f : dessin.getFormes()) {
                 f.dessiner(g2d);
             }
 
             g2d.dispose();
 
-            // 5. Sauvegarder le fichier
             File output = new File(destination);
             ImageIO.write(image, "png", output);
 
