@@ -16,7 +16,8 @@ public class GestionnaireFichier {
         if (fichier.getParentFile() != null) fichier.getParentFile().mkdirs();
         PrintWriter writer = new PrintWriter(fichier);
         writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-        writer.println("<dessin>");
+        writer.println("<dessin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+        writer.println("        xsi:noNamespaceSchemaLocation=\"dessin.xsd\">");
         for (Forme f : dessin.getFormes()) {
             ecrireXML(writer, f, "  ");
         }
@@ -32,9 +33,26 @@ public class GestionnaireFichier {
                 ecrireXML(writer, enfant, indent + "  ");
             }
             writer.println(indent + "</groupe>");
-        } else {
-            writer.println(indent + "<forme type=\"" + f.getClass().getSimpleName().toLowerCase() + "\">"
-                    + f.toString() + "</forme>");
+        } else if (f instanceof Line) {
+            Line l = (Line) f;
+            writer.println(indent + "<line x1=\"" + l.getX1() + "\" y1=\"" + l.getY1()
+                + "\" x2=\"" + l.getX2() + "\" y2=\"" + l.getY2()
+                + "\" color=\"" + l.getCouleur() + "\"/>");
+        } else if (f instanceof Rect) {
+            Rect r = (Rect) f;
+            writer.println(indent + "<rect x1=\"" + r.getX1() + "\" y1=\"" + r.getY1()
+                + "\" x2=\"" + r.getX2() + "\" y2=\"" + r.getY2()
+                + "\" color=\"" + r.getCouleur() + "\"/>");
+        } else if (f instanceof Circ) {
+            Circ c = (Circ) f;
+            writer.println(indent + "<circ cx=\"" + c.getCx() + "\" cy=\"" + c.getCy()
+                + "\" r=\"" + c.getR()
+                + "\" color=\"" + c.getCouleur() + "\"/>");
+        } else if (f instanceof Elli) {
+            Elli e = (Elli) f;
+            writer.println(indent + "<elli cx=\"" + e.getCx() + "\" cy=\"" + e.getCy()
+                + "\" rx=\"" + e.getRx() + "\" ry=\"" + e.getRy()
+                + "\" color=\"" + e.getCouleur() + "\"/>");
         }
     }
 
@@ -42,7 +60,7 @@ public class GestionnaireFichier {
         File fichier = new File(nomFichier);
         if (!fichier.exists()) {
             System.out.println("Fichier introuvable : " + fichier.getPath());
-            return;
+            return; // Returns safely without wiping the canvas
         }
         dessin.vider();
         List<String> lignes = new ArrayList<>();
@@ -64,14 +82,33 @@ public class GestionnaireFichier {
                 i = parserBloc(lignes, i + 1, g);
                 ajouter(conteneur, g);
                 continue;
-            } else if (ligne.contains("<forme")) {
-                String contenu = ligne.substring(ligne.indexOf(">") + 1, ligne.lastIndexOf("<"));
-                String[] mots = contenu.split(" ");
-                Dessin temp = new Dessin();
-                new Interpreteur(temp, null).executer(mots[0], mots);
-                if (!temp.getFormes().isEmpty()) {
-                    ajouter(conteneur, temp.getFormes().get(0));
-                }
+            } else if (ligne.contains("<line ")) {
+                ajouter(conteneur, new Line(
+                    Integer.parseInt(extraireAttribut(ligne,"x1")),
+                    Integer.parseInt(extraireAttribut(ligne,"y1")),
+                    Integer.parseInt(extraireAttribut(ligne,"x2")),
+                    Integer.parseInt(extraireAttribut(ligne,"y2")),
+                    extraireAttribut(ligne,"color")));
+            } else if (ligne.contains("<rect ")) {
+                ajouter(conteneur, new Rect(
+                    Integer.parseInt(extraireAttribut(ligne,"x1")),
+                    Integer.parseInt(extraireAttribut(ligne,"y1")),
+                    Integer.parseInt(extraireAttribut(ligne,"x2")),
+                    Integer.parseInt(extraireAttribut(ligne,"y2")),
+                    extraireAttribut(ligne,"color")));
+            } else if (ligne.contains("<circ ")) {
+                ajouter(conteneur, new Circ(
+                    Integer.parseInt(extraireAttribut(ligne,"cx")),
+                    Integer.parseInt(extraireAttribut(ligne,"cy")),
+                    Integer.parseInt(extraireAttribut(ligne,"r")),
+                    extraireAttribut(ligne,"color")));
+            } else if (ligne.contains("<elli ")) {
+                ajouter(conteneur, new Elli(
+                    Integer.parseInt(extraireAttribut(ligne,"cx")),
+                    Integer.parseInt(extraireAttribut(ligne,"cy")),
+                    Integer.parseInt(extraireAttribut(ligne,"rx")),
+                    Integer.parseInt(extraireAttribut(ligne,"ry")),
+                    extraireAttribut(ligne,"color")));
             }
             i++;
         }

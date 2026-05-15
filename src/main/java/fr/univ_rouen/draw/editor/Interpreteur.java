@@ -47,16 +47,16 @@ public class Interpreteur {
         try {
             switch (cmd) {
                 case "line":
-                    dessin.ajouterForme(new line(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
+                    dessin.ajouterForme(new Line(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
                     break;
                 case "rect":
-                    dessin.ajouterForme(new rect(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
+                    dessin.ajouterForme(new Rect(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
                     break;
                 case "circ":
-                    dessin.ajouterForme(new circ(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), args[4]));
+                    dessin.ajouterForme(new Circ(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), args[4]));
                     break;
                 case "elli":
-                    dessin.ajouterForme(new elli(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
+                    dessin.ajouterForme(new Elli(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
                     break;
                 case "new":
                     dessin.vider();

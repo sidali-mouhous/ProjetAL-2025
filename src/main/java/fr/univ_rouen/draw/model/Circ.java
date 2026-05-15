@@ -3,15 +3,31 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class circ implements Forme {
+public class Circ implements Forme {
     private int x, y, r;
     private String couleur;
 
-    public circ(int x, int y, int r, String couleur) {
+    public Circ(int x, int y, int r, String couleur) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.couleur = couleur;
+    }
+
+    public int getCx() {
+        return x;
+    }
+
+    public int getCy() {
+        return y;
+    }
+
+    public int getR() {
+        return r;
+    }
+
+    public String getCouleur() {
+        return couleur;
     }
 
     @Override

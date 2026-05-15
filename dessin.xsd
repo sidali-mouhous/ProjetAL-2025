@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="dessin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="line"/>
+          <xs:element ref="rect"/>
+          <xs:element ref="circ"/>
+          <xs:element ref="elli"/>
+          <xs:element ref="group"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="ColorType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="red"/>
+      <xs:enumeration value="blue"/>
+      <xs:enumeration value="green"/>
+      <xs:enumeration value="black"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="line">
+    <xs:complexType>
+      <xs:attribute name="x1"    type="xs:int"       use="required"/>
+      <xs:attribute name="y1"    type="xs:int"       use="required"/>
+      <xs:attribute name="x2"    type="xs:int"       use="required"/>
+      <xs:attribute name="y2"    type="xs:int"       use="required"/>
+      <xs:attribute name="color" type="ColorType"    use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="rect">
+    <xs:complexType>
+      <xs:attribute name="x1"    type="xs:int"       use="required"/>
+      <xs:attribute name="y1"    type="xs:int"       use="required"/>
+      <xs:attribute name="x2"    type="xs:int"       use="required"/>
+      <xs:attribute name="y2"    type="xs:int"       use="required"/>
+      <xs:attribute name="color" type="ColorType"    use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="circ">
+    <xs:complexType>
+      <xs:attribute name="cx"    type="xs:int"       use="required"/>
+      <xs:attribute name="cy"    type="xs:int"       use="required"/>
+      <xs:attribute name="r"     type="xs:int"       use="required"/>
+      <xs:attribute name="color" type="ColorType"    use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="elli">
+    <xs:complexType>
+      <xs:attribute name="cx"    type="xs:int"       use="required"/>
+      <xs:attribute name="cy"    type="xs:int"       use="required"/>
+      <xs:attribute name="rx"    type="xs:int"       use="required"/>
+      <xs:attribute name="ry"    type="xs:int"       use="required"/>
+      <xs:attribute name="color" type="ColorType"    use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="line"/>
+          <xs:element ref="rect"/>
+          <xs:element ref="circ"/>
+          <xs:element ref="elli"/>
+          <xs:element ref="group"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

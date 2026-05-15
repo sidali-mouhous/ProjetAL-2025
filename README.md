@@ -2,8 +2,6 @@
 
 Éditeur de dessin vectoriel — projet M1 Architecture Logicielle 2025-2026.
 
----
-
 ## Prérequis
 
 - Java 21
@@ -82,8 +80,6 @@ Couleurs disponibles : `red`, `blue`, `green`, `black`
 
 > Le rang d'une forme s'obtient avec `list`.
 
----
-
 ## Programmes standalone
 
 ### Fusionner deux dessins (Merge)
@@ -100,28 +96,4 @@ Couleurs disponibles : `red`, `blue`, `green`, `black`
 ```
 > Génère une image PNG 800×600 à partir d'un fichier `.vec`.
 
----
-
-## Structure du projet
-
-```
-src/main/java/fr/univ_rouen/draw/
-├── editor/
-│   ├── AfficheurDessin.java   — panneau graphique Swing
-│   ├── EditeurFrame.java      — fenêtre principale
-│   └── Interpreteur.java      — interpréteur de commandes
-├── io/
-│   ├── GestionnaireFichier.java — save/load XML
-│   ├── Merge.java               — fusion de fichiers .vec
-│   └── V2Bmp.java               — conversion .vec → PNG
-└── model/
-    ├── Forme.java    — interface commune
-    ├── Dessin.java   — liste de formes
-    ├── line.java     — ligne
-    ├── rect.java     — rectangle
-    ├── circ.java     — cercle
-    ├── elli.java     — ellipse
-    └── Groupe.java   — groupe de formes
-drawings/             — dossier des fichiers .vec sauvegardés
-```
 

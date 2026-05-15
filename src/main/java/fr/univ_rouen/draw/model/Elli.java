@@ -3,17 +3,23 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class elli implements Forme {
+public class Elli implements Forme {
     private int x, y, rx, ry;
     private String couleur;
 
-    public elli(int x, int y, int rx, int ry, String couleur) {
+    public Elli(int x, int y, int rx, int ry, String couleur) {
         this.x = x;
         this.y = y;
         this.rx = rx;
         this.ry = ry;
         this.couleur = couleur;
     }
+
+    public int getCx() { return x; }
+    public int getCy() { return y; }
+    public int getRx() { return rx; }
+    public int getRy() { return ry; }
+    public String getCouleur() { return couleur; }
 
     @Override
     public void dessiner(Graphics g) {

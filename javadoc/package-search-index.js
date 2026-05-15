@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"fr.univ_rouen.draw.editor"},{"l":"fr.univ_rouen.draw.io"},{"l":"fr.univ_rouen.draw.model"},{"l":"org.example"}];updateSearchResults();
