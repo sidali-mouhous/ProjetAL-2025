@@ -1,5 +1,17 @@
-compile: 
-	mvn compile
+ifeq ($(OS),Windows_NT)
+	MVNW = .\mvnw.cmd
+else
+	MVNW = ./mvnw
+endif
+
+compile:
+	$(MVNW) compile
 
 run:
-    ./mvnw exec:java -Dexec.mainClass=org.example.Main
+	$(MVNW) exec:java
+
+clean:
+	$(MVNW) clean
+
+build:
+	$(MVNW) clean install

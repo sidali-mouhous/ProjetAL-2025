@@ -68,11 +68,11 @@ public class Interpreteur {
                     break;
                 case "save":
                     GestionnaireFichier.sauvegarder(dessin, args[1]);
-                    System.out.println("Dessin sauvegardé dans " + args[1]);
+                    System.out.println("Dessin sauvegardé dans drawings/" + args[1]);
                     break;
                 case "load": 
                     GestionnaireFichier.charger(dessin, args[1], this);
-                    System.out.println("Dessin chargé depuis " + args[1]);
+                    System.out.println("Dessin chargé depuis drawings/" + args[1]);
                     break;
                 case "grp":
                     try {

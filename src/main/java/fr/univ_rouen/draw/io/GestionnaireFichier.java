@@ -9,8 +9,17 @@ import java.util.Scanner;
 
 public class GestionnaireFichier {
 
+    private static final String DOSSIER_VEC = "drawings";
+
+    private static File resoudre(String nomFichier) {
+        File dossier = new File(DOSSIER_VEC);
+        if (!dossier.exists()) dossier.mkdirs();
+        return new File(dossier, nomFichier);
+    }
+
     public static void sauvegarder(Dessin dessin, String nomFichier) throws IOException {
-        PrintWriter writer = new PrintWriter(nomFichier);
+        File fichier = resoudre(nomFichier);
+        PrintWriter writer = new PrintWriter(fichier);
         writer.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         writer.println("<dessin>");
 
@@ -28,8 +37,11 @@ public class GestionnaireFichier {
     }
 
     public static void charger(Dessin dessin, String nomFichier, Interpreteur interpreteur) throws IOException {
-        File fichier = new File(nomFichier);
-        if (!fichier.exists()) return;
+        File fichier = resoudre(nomFichier);
+        if (!fichier.exists()) {
+            System.out.println("Fichier introuvable : " + fichier.getPath());
+            return;
+        }
 
         Scanner reader = new Scanner(fichier);
         dessin.vider();
