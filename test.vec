@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dessin>
+  <forme type="rectangle">rectangle 20 20 80 60 blue</forme>
+  <forme type="cercle">circle 120 120 30 green</forme>
+  <forme type="ellipse">elli 200 150 40 20 black</forme>
+</dessin>

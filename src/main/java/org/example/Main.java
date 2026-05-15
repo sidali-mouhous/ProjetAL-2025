@@ -1,3 +1,5 @@
+package org.example;
+
 import fr.univ_rouen.draw.editor.EditeurFrame;
 import fr.univ_rouen.draw.editor.Interpreteur;
 import fr.univ_rouen.draw.model.Dessin;
