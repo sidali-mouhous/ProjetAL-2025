@@ -28,7 +28,12 @@ public class Interpreteur {
             String[] mots = ligne.split(" ");
             String commande = mots[0].toLowerCase();
 
-            if (commande.equals("quit")) break;
+            if (commande.equals("quit")) {
+                System.out.println("Au revoir !");
+                scanner.close();
+                frame.dispose();
+                System.exit(0);
+            }
 
             executer(commande, mots);
             frame.repaint();

@@ -26,6 +26,6 @@ public class circ implements Forme {
 
     @Override
     public String toString() {
-        return "circle " + x + " " + y + " " + r + " " + couleur;
+        return "circ " + x + " " + y + " " + r + " " + couleur;
     }
 }
