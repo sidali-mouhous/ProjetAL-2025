@@ -3,11 +3,11 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Ligne implements Forme {
+public class rect implements Forme {
     private int x1, y1, x2, y2;
     private String couleur;
 
-    public Ligne(int x1, int y1, int x2, int y2, String couleur) {
+    public rect(int x1, int y1, int x2, int y2, String couleur) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
@@ -22,11 +22,15 @@ public class Ligne implements Forme {
         else if (couleur.equalsIgnoreCase("red")) g.setColor(Color.RED);
         else g.setColor(Color.BLACK);
 
-        g.drawLine(x1, y1, x2, y2);
+        int x = Math.min(x1, x2);
+        int y = Math.min(y1, y2);
+        int width = Math.abs(x1 - x2);
+        int height = Math.abs(y1 - y2);
+        g.drawRect(x, y, width, height);
     }
 
     @Override
     public String toString() {
-        return "line " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + couleur;
+        return "rect " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + couleur;
     }
 }

@@ -3,14 +3,15 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Cercle implements Forme {
-    private int x, y, r;
+public class line implements Forme {
+    private int x1, y1, x2, y2;
     private String couleur;
 
-    public Cercle(int x, int y, int r, String couleur) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
+    public line(int x1, int y1, int x2, int y2, String couleur) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
         this.couleur = couleur;
     }
 
@@ -21,11 +22,11 @@ public class Cercle implements Forme {
         else if (couleur.equalsIgnoreCase("red")) g.setColor(Color.RED);
         else g.setColor(Color.BLACK);
 
-        g.drawOval(x - r, y - r, 2 * r, 2 * r);
+        g.drawLine(x1, y1, x2, y2);
     }
 
     @Override
     public String toString() {
-        return "circle " + x + " " + y + " " + r + " " + couleur;
+        return "line " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + couleur;
     }
 }

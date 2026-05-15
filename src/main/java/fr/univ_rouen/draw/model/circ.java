@@ -3,15 +3,14 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Rectangle implements Forme {
-    private int x1, y1, x2, y2;
+public class circ implements Forme {
+    private int x, y, r;
     private String couleur;
 
-    public Rectangle(int x1, int y1, int x2, int y2, String couleur) {
-        this.x1 = x1;
-        this.y1 = y1;
-        this.x2 = x2;
-        this.y2 = y2;
+    public circ(int x, int y, int r, String couleur) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
         this.couleur = couleur;
     }
 
@@ -22,15 +21,11 @@ public class Rectangle implements Forme {
         else if (couleur.equalsIgnoreCase("red")) g.setColor(Color.RED);
         else g.setColor(Color.BLACK);
 
-        int x = Math.min(x1, x2);
-        int y = Math.min(y1, y2);
-        int width = Math.abs(x1 - x2);
-        int height = Math.abs(y1 - y2);
-        g.drawRect(x, y, width, height);
+        g.drawOval(x - r, y - r, 2 * r, 2 * r);
     }
 
     @Override
     public String toString() {
-        return "rectangle " + x1 + " " + y1 + " " + x2 + " " + y2 + " " + couleur;
+        return "circle " + x + " " + y + " " + r + " " + couleur;
     }
 }

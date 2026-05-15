@@ -1,3 +1,15 @@
+error id: file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java:java/lang/Integer#
+file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java
+empty definition using pc, found symbol in pc: java/lang/Integer#
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 1484
+uri: file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java
+text:
+
+```scala
 package fr.univ_rouen.draw.editor;
 
 import fr.univ_rouen.draw.model.*;
@@ -41,10 +53,10 @@ public class Interpreteur {
         try {
             switch (cmd) {
                 case "line":
-                    dessin.ajouterForme(new line(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
+                    dessin.ajouterForme(new Ligne(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
                     break;
                 case "rect":
-                    dessin.ajouterForme(new rect(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
+                    dessin.ajouterForme(new rect(@@Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]));
                     break;
                 case "circ":
                     dessin.ajouterForme(new circ(Integer.parseInt(args[1]), Integer.parseInt(args[2]), Integer.parseInt(args[3]), args[4]));
@@ -65,7 +77,7 @@ public class Interpreteur {
                     GestionnaireFichier.sauvegarder(dessin, args[1]);
                     System.out.println("Dessin sauvegardé dans " + args[1]);
                     break;
-                case "load": 
+                case "load":
                     GestionnaireFichier.charger(dessin, args[1], this);
                     System.out.println("Dessin chargé depuis " + args[1]);
                     break;
@@ -105,3 +117,8 @@ public class Interpreteur {
         }
     }
 }
+```
+
+#### Short summary:
+
+empty definition using pc, found symbol in pc: java/lang/Integer#

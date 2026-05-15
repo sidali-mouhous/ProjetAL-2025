@@ -3,11 +3,11 @@ package fr.univ_rouen.draw.model;
 import java.awt.Graphics;
 import java.awt.Color;
 
-public class Ellipse implements Forme {
+public class elli implements Forme {
     private int x, y, rx, ry;
     private String couleur;
 
-    public Ellipse(int x, int y, int rx, int ry, String couleur) {
+    public elli(int x, int y, int rx, int ry, String couleur) {
         this.x = x;
         this.y = y;
         this.rx = rx;

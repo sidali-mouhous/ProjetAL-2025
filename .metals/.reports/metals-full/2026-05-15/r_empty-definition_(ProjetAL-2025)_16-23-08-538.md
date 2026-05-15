@@ -1,3 +1,15 @@
+error id: file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java:java/io/PrintStream#println(+8).
+file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java
+empty definition using pc, found symbol in pc: java/io/PrintStream#println(+8).
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+
+offset: 2773
+uri: file://<WORKSPACE>/src/main/java/fr/univ_rouen/draw/editor/Interpreteur.java
+text:
+
+```scala
 package fr.univ_rouen.draw.editor;
 
 import fr.univ_rouen.draw.model.*;
@@ -22,10 +34,10 @@ public class Interpreteur {
         while (true) {
             System.out.print("> ");
             if (!scanner.hasNextLine()) break;
-            String ligne = scanner.nextLine();
-            if (ligne.isEmpty()) continue;
+            String line = scanner.nextLine();
+            if (line.isEmpty()) continue;
 
-            String[] mots = ligne.split(" ");
+            String[] mots = line.split(" ");
             String commande = mots[0].toLowerCase();
 
             if (commande.equals("quit")) break;
@@ -65,9 +77,9 @@ public class Interpreteur {
                     GestionnaireFichier.sauvegarder(dessin, args[1]);
                     System.out.println("Dessin sauvegardé dans " + args[1]);
                     break;
-                case "load": 
+                case "load":
                     GestionnaireFichier.charger(dessin, args[1], this);
-                    System.out.println("Dessin chargé depuis " + args[1]);
+                    System.out.println@@("Dessin chargé depuis " + args[1]);
                     break;
                 case "grp":
                     try {
@@ -105,3 +117,8 @@ public class Interpreteur {
         }
     }
 }
+```
+
+#### Short summary:
+
+empty definition using pc, found symbol in pc: java/io/PrintStream#println(+8).

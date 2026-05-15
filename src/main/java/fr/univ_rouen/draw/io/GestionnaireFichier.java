@@ -35,10 +35,10 @@ public class GestionnaireFichier {
         dessin.vider();
 
         while (reader.hasNextLine()) {
-            String ligne = reader.nextLine().trim();
-            if (ligne.contains("<forme")) {
+            String line = reader.nextLine().trim();
+            if (line.contains("<forme")) {
                 // Extraction du texte entre les balises XML
-                String contenu = ligne.substring(ligne.indexOf(">") + 1, ligne.lastIndexOf("<"));
+                String contenu = line.substring(line.indexOf(">") + 1, line.lastIndexOf("<"));
                 String[] mots = contenu.split(" ");
                 // On utilise la méthode public de l'interpréteur
                 interpreteur.executer(mots[0], mots);

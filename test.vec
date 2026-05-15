@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dessin>
-  <forme type="rectangle">rectangle 20 20 80 60 blue</forme>
-  <forme type="cercle">circle 120 120 30 green</forme>
-  <forme type="ellipse">elli 200 150 40 20 black</forme>
+  <forme type="circ">circle 300 200 60 green</forme>
+  <forme type="line">line 10 10 200 100 red</forme>
+  <forme type="line">line 10 10 200 100 red</forme>
+  <forme type="rect">rect 50 50 180 140 blue</forme>
+  <forme type="elli">elli 450 250 90 40 black</forme>
 </dessin>
