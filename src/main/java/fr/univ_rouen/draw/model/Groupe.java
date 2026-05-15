@@ -25,6 +25,10 @@ public class Groupe implements Forme {
         return enfants;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     @Override
     public void dessiner(Graphics g) {
         for (Forme f : enfants) {

@@ -5,6 +5,7 @@ import java.util.Scanner;
 import fr.univ_rouen.draw.io.GestionnaireFichier;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Interpreteur {
     private Dessin dessin;
@@ -67,17 +68,17 @@ public class Interpreteur {
                     }
                     break;
                 case "save":
-                    GestionnaireFichier.sauvegarder(dessin, args[1]);
+                    GestionnaireFichier.sauvegarder(dessin, "drawings/" + args[1]);
                     System.out.println("Dessin sauvegardé dans drawings/" + args[1]);
                     break;
                 case "load": 
-                    GestionnaireFichier.charger(dessin, args[1], this);
+                    GestionnaireFichier.charger(dessin, "drawings/" + args[1], this);
                     System.out.println("Dessin chargé depuis drawings/" + args[1]);
                     break;
                 case "grp":
                     try {
                         String[] indices = args[1].split(",");
-                        String label = args[2];
+                        String label = String.join(" ", Arrays.copyOfRange(args, 2, args.length));
                         Groupe nouveauGroupe = new Groupe(label);
 
                         // 1. On récupère les formes d'abord
@@ -102,6 +103,24 @@ public class Interpreteur {
                         System.out.println("Groupe '" + label + "' créé avec succès.");
                     } catch (Exception e) {
                         System.out.println("Erreur grp : vérifiez le format (ex: grp 1,2 label)");
+                    }
+                    break;
+                case "ugrp":
+                    try {
+                        int rang = Integer.parseInt(args[1]) - 1;
+                        Forme cible = dessin.getFormes().get(rang);
+                        if (cible instanceof Groupe) {
+                            Groupe g = (Groupe) cible;
+                            dessin.getFormes().remove(rang);
+                            for (Forme enfant : g.getEnfants()) {
+                                dessin.ajouterForme(enfant);
+                            }
+                            System.out.println("Groupe défait avec succès.");
+                        } else {
+                            System.out.println("L'élément " + args[1] + " n'est pas un groupe.");
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Erreur ugrp : vérifiez le rang (ex: ugrp 2)");
                     }
                     break;
             }

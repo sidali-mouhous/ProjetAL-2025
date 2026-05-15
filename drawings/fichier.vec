@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dessin>
+  <forme type="line">line 10 10 200 100 red</forme>
+  <forme type="rect">rect 50 50 180 140 blue</forme>
+  <forme type="circ">circ 300 200 60 green</forme>
+  <forme type="elli">elli 450 250 90 40 black</forme>
+</dessin>
